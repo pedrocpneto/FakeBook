@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="br.ufu.bau.dominio.usuario" table="amigos">
+		<!-- Identificador da classe -->
+		<id column="codigoUsuario " name="id" type= "java.lang.Long">
+			<generator class="increment"/>
+		</id>
+		
+		<!--Atributos de classe -->
+		<property column="nomelogin" name="nomeLogin" type="java.lang.String"/>
+    	<property column="passe" name="senha" type="java.lang.String"/>
+    	<property column="nome" name="nomeUsuario" type="java.lang.String"/>
+		
+		<set name="arquivos" table="arquivos" lazy="true" inverse="false"
+			fetch="select">
+			<key>
+				<column name="FK_usuario" not-null="true" />
+			</key>
+			<one-to-many class="br.ufu.bau.dominio.arquivo"></one-to-many>
+		</set>
+		
+	</class>
+</hibernate-mapping>
+
+

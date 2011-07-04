@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="br.ufu.bau.modelo.dominio.Arquivo" table="arquivo">
+		
+		<id column="codigoArquivo" name="id" type="java.lang.Long">
+			<generator class="increment" />
+		</id>
+		
+		<property column="caminho" name="caminho" type="java.lang.String"/>
+		<property column="tamanho" name="tamanho" type="java.lang.Long"/>
+		<property column="descricao" name="descricao" type="java.lang.String"/>
+		<property column="dataUpload" name="dataUpload" type="java.util.Date"/>
+		
+		<many-to-one name="us" class="br.ufu.bau.dominio.Usuario" column="codigoUsuario"/>
+
+	</class>
+</hibernate-mapping>

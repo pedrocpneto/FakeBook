@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="br.ufu.bau.dominio.Usuario" table="amigos">
+		<!-- Identificador da classe -->
+		<composite-id class="br.ufu.bau.dominio.usuario">
+			<key-property name="id" type="java.lang.Long" column="Fk_usuario" />
+
+			<key-property name="id" type="java.lang.Long" column="Fk_amigo" />
+		</composite-id>
+		
+		<!--Atributos de classe -->
+		<set name="amigos" table="amigos" lazy="true" inverse="false"
+			fetch="select">
+			<key>
+				<column name="FK_amigo" not-null="true" />
+			</key>
+			<many-to-many class="br.ufu.bau.dominio.usuario"></many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>
+
